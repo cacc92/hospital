@@ -1,5 +1,6 @@
 package com.duoc.hospital.hospital.services;
 
+import com.duoc.hospital.hospital.dtos.AtencionViewMedicoDTO;
 import com.duoc.hospital.hospital.exceptions.MedicoException;
 import com.duoc.hospital.hospital.models.Medico;
 import com.duoc.hospital.hospital.repositories.MedicoRepository;
@@ -58,5 +59,19 @@ public class MedicoServiceImpl implements MedicoService {
         }).orElseThrow(
                 () -> new MedicoException("El medico con id " + id + " no existe")
         );
+    }
+
+    @Override
+    public List<AtencionViewMedicoDTO> findAtencionesById(Long id) {
+        Medico medico = this.findById(id);
+        return medico.getAtenciones().stream().map(atencion -> {
+            return new AtencionViewMedicoDTO(
+                    atencion.getHoraAtencion(),
+                    atencion.getCosto(),
+                    atencion.getComentario(),
+                    atencion.getPaciente().getRun(),
+                    atencion.getPaciente().getNombres()+" "+atencion.getPaciente().getApellidos()
+            );
+        }).toList();
     }
 }

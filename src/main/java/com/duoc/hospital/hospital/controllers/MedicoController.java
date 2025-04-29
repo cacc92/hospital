@@ -1,5 +1,6 @@
 package com.duoc.hospital.hospital.controllers;
 
+import com.duoc.hospital.hospital.dtos.AtencionViewMedicoDTO;
 import com.duoc.hospital.hospital.models.Medico;
 import com.duoc.hospital.hospital.services.MedicoService;
 import jakarta.validation.Valid;
@@ -58,6 +59,13 @@ public class MedicoController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(medicoService.updateById(id, medico));
+    }
+
+    @GetMapping("/{id}/atenciones")
+    public ResponseEntity<List<AtencionViewMedicoDTO>> getAtencionesById(@PathVariable Long id){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(medicoService.findAtencionesById(id));
     }
 
 }
