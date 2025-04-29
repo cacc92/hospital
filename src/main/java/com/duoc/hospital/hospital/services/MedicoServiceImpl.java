@@ -61,6 +61,7 @@ public class MedicoServiceImpl implements MedicoService {
         );
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<AtencionViewMedicoDTO> findAtencionesById(Long id) {
         Medico medico = this.findById(id);
