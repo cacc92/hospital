@@ -2,8 +2,6 @@ package com.duoc.hospital.hospital.services;
 
 import com.duoc.hospital.hospital.dtos.AtencionViewPacienteDTO;
 import com.duoc.hospital.hospital.dtos.PacienteCreationDTO;
-import com.duoc.hospital.hospital.dtos.PacienteDetalleDTO;
-import com.duoc.hospital.hospital.exceptions.FichaPacienteException;
 import com.duoc.hospital.hospital.exceptions.PacienteException;
 import com.duoc.hospital.hospital.exceptions.TipoUsuarioException;
 import com.duoc.hospital.hospital.models.Paciente;
@@ -120,38 +118,5 @@ public class PacienteServiceImpl implements PacienteService {
             );
         }).collect(Collectors.toList());
     }
-
-    @Override
-    public PacienteDetalleDTO findByPacienteId(Long idPaciente) {
-        // Como la ficha paciente tiene el mismo ID que ficha paciente puedo asumir que la busqqueda se encuentra
-        FichaPaciente fichaPaciente = fichaPacienteRepository.findById(idPaciente).orElseThrow(
-                () -> new FichaPacienteException("Ficha paciente con id "+idPaciente+" no encontrada")
-        );
-        return pacienteRepository.findById(idPaciente).map(paciente -> {
-            PacienteDetalleDTO dto = new PacienteDetalleDTO();
-            dto.setDatosPersonales1(fichaPaciente.getDatosPersonales1());
-            dto.setDatosPersonales2(fichaPaciente.getDatosPersonales2());
-            dto.setDatosPersonales3(fichaPaciente.getDatosPersonales3());
-            dto.setDatosPersonales4(fichaPaciente.getDatosPersonales4());
-            dto.setDatosPersonales5(fichaPaciente.getDatosPersonales5());
-            dto.setNombreCompleto(paciente.getNombres()+" "+paciente.getApellidos());
-            dto.setFechaNacimiento(paciente.getFechaNacimiento());
-            dto.setRun(paciente.getRun());
-            dto.setCorreo(paciente.getCorreo());
-            dto.setAtencionViewPacienteDTOList(paciente.getAtenciones().stream().map(atencion -> {
-                return new AtencionViewPacienteDTO(
-                        atencion.getAtencionId(),
-                        atencion.getHoraAtencion(),
-                        atencion.getComentario(),
-                        atencion.getCosto(),
-                        atencion.getMedico()
-                );
-            }).collect(Collectors.toList()));
-            return dto;
-        }).orElseThrow(
-                () -> new PacienteException("Paciente con id "+idPaciente+" no encontrado")
-        );
-    }
-
 
 }
