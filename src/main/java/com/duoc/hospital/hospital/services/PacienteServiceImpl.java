@@ -1,18 +1,13 @@
 package com.duoc.hospital.hospital.services;
 
-import com.duoc.hospital.hospital.dtos.AtencionViewDTO;
 import com.duoc.hospital.hospital.dtos.AtencionViewPacienteDTO;
 import com.duoc.hospital.hospital.dtos.PacienteCreationDTO;
 import com.duoc.hospital.hospital.dtos.PacienteDetalleDTO;
 import com.duoc.hospital.hospital.exceptions.FichaPacienteException;
 import com.duoc.hospital.hospital.exceptions.PacienteException;
 import com.duoc.hospital.hospital.exceptions.TipoUsuarioException;
-import com.duoc.hospital.hospital.models.Atencion;
-import com.duoc.hospital.hospital.models.FichaPaciente;
 import com.duoc.hospital.hospital.models.Paciente;
 import com.duoc.hospital.hospital.models.TipoUsuario;
-import com.duoc.hospital.hospital.repositories.AtencionRepository;
-import com.duoc.hospital.hospital.repositories.FichaPacienteRepository;
 import com.duoc.hospital.hospital.repositories.PacienteRepository;
 import com.duoc.hospital.hospital.repositories.TipoUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

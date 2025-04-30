@@ -1,8 +1,5 @@
 package com.duoc.hospital.hospital.controllers;
 
-import com.duoc.hospital.hospital.dtos.FichaPacienteCreationDTO;
-import com.duoc.hospital.hospital.models.FichaPaciente;
-import com.duoc.hospital.hospital.services.FichaPacienteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

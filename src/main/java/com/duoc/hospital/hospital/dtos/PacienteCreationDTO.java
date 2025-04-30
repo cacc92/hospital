@@ -37,20 +37,4 @@ public class PacienteCreationDTO {
     @NotNull(message = "El campo tipo de usuario id no puede ser vacio")
     private Long tipoUsuarioId;
 
-    @NotBlank(message = "El campo de datos personales 1 no puede ser vacio")
-    private String datosPersonales1;
-
-    @NotBlank(message = "El campo de datos personales 2 no puede ser vacio")
-    private String datosPersonales2;
-
-    @NotBlank(message = "El campo de datos personales 3 no puede ser vacio")
-    private String datosPersonales3;
-
-    @NotBlank(message = "El campo de datos personales 4 no puede ser vacio")
-    private String datosPersonales4;
-
-    @NotBlank(message = "El campo de datos personales 5 no puede ser vacio")
-    private String datosPersonales5;
-
-
 }

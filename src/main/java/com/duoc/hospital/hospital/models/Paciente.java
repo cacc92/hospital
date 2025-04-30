@@ -87,8 +87,5 @@ public class Paciente {
     @JsonBackReference("tipo-usuario")
     @JoinColumn(name="tipo_usuario_id", nullable = false)
     private TipoUsuario tipoUsuario;
-
-    @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL, orphanRemoval = true)
-        FichaPaciente fichaPaciente;
-
+    
 }
