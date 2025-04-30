@@ -21,8 +21,7 @@ import java.util.stream.Collectors;
 public class PacienteServiceImpl implements PacienteService {
     @Autowired
     private PacienteRepository pacienteRepository;
-    @Autowired
-    private FichaPacienteRepository fichaPacienteRepository;
+
     @Autowired
     private TipoUsuarioRepository tipoUsuarioRepository;
 
