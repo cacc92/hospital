@@ -37,17 +37,5 @@ public class TipoUsuarioServiceImpl implements TipoUsuarioService {
         return tipoUsuarioRepository.save(tipoUsuario);
     }
 
-    @Override
-    public Integer getTotalByTipoUsuario(Long idTipoUsuario) {
-        TipoUsuario tipoUsuario  = this.findById(idTipoUsuario);
-        List<Paciente> pacientes = tipoUsuario.getPacientes();
-        Integer total = 0;
-        for (Paciente paciente : pacientes) {
-            List<Atencion>  atencions = paciente.getAtenciones();
-            for (Atencion atencion : atencions) {
-                total = total + atencion.getCosto();
-            }
-        }
-        return total;
-    }
+
 }

@@ -9,6 +9,6 @@ public interface TipoUsuarioService {
     List<TipoUsuario> findAll();
     TipoUsuario findById(Long id);
     TipoUsuario save(TipoUsuario tipoUsuario);
-    Integer getTotalByTipoUsuario(Long idTipoUsuario);
+
 
 }
