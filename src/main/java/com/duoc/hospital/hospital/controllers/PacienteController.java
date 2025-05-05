@@ -1,5 +1,9 @@
 package com.duoc.hospital.hospital.controllers;
 
+import com.duoc.hospital.hospital.dtos.AtencionViewDTO;
+import com.duoc.hospital.hospital.dtos.AtencionViewPacienteDTO;
+import com.duoc.hospital.hospital.dtos.PacienteCreationDTO;
+import com.duoc.hospital.hospital.dtos.PacienteDetalleDTO;
 import com.duoc.hospital.hospital.models.Paciente;
 import com.duoc.hospital.hospital.services.PacienteService;
 import jakarta.validation.Valid;
@@ -51,7 +55,7 @@ public class PacienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Paciente> createPaciente(@Valid @RequestBody Paciente paciente) {
+    public ResponseEntity<Paciente> createPaciente(@Valid @RequestBody PacienteCreationDTO paciente) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(pacienteService.save(paciente));
@@ -71,5 +75,20 @@ public class PacienteController {
                 .status(HttpStatus.NO_CONTENT)
                 .build();
     }
+
+    @GetMapping("/{id}/atenciones")
+    public ResponseEntity<List<AtencionViewPacienteDTO>> getPacienteAtenciones(@PathVariable Long id) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(pacienteService.findByAtencionesByPacienteId(id));
+    }
+
+    @GetMapping("/{id}/detalle")
+    public ResponseEntity<PacienteDetalleDTO> getPacienteDetalleById(@PathVariable Long id) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(pacienteService.findByPacienteId(id));
+    }
+
 
 }

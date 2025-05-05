@@ -1,5 +1,9 @@
 package com.duoc.hospital.hospital.services;
 
+import com.duoc.hospital.hospital.dtos.AtencionViewDTO;
+import com.duoc.hospital.hospital.dtos.AtencionViewPacienteDTO;
+import com.duoc.hospital.hospital.dtos.PacienteCreationDTO;
+import com.duoc.hospital.hospital.dtos.PacienteDetalleDTO;
 import com.duoc.hospital.hospital.models.Paciente;
 
 import java.util.List;
@@ -29,9 +33,12 @@ public interface PacienteService {
 
     List<Paciente> findAll();
     Paciente findById(Long id);
-    Paciente save(Paciente paciente);
+    Paciente save(PacienteCreationDTO paciente);
     void deleteById(Long id);
     Paciente updateById(Long id, Paciente paciente);
     Paciente findByCorreo(String correo);
     Paciente findByRun(String run);
+    List<AtencionViewPacienteDTO> findByAtencionesByPacienteId(Long idPaciente);
+    PacienteDetalleDTO findByPacienteId(Long idPaciente);
+
 }

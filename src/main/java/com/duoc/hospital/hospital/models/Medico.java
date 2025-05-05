@@ -45,10 +45,10 @@ public class Medico {
 
     @OneToMany(mappedBy = "medico", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference("medico-especialidad")
-    List<RegistroEspecialidad>  especialidades = new ArrayList<>();
+    private List<RegistroEspecialidad>  especialidades = new ArrayList<>();
 
     @OneToMany(mappedBy = "medico",cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference("medico-paciente")
-    List<Atencion> atenciones = new ArrayList<>();
+    private List<Atencion> atenciones = new ArrayList<>();
 
 }

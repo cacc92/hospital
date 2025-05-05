@@ -28,6 +28,6 @@ public class Especialidad {
 
     @OneToMany(mappedBy = "especialidad", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference("especialidad-medico")
-    List<RegistroEspecialidad> medicos = new ArrayList<>();
+    private List<RegistroEspecialidad> medicos = new ArrayList<>();
 
 }
